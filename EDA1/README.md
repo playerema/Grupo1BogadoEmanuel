@@ -8,7 +8,7 @@ Curso de Estructuras de Datos y Algoritmos I, Universidad Nacional de Lujan
 ##### Perello Mario – Profesor Adjunto
 ##### Racker José – Ayudante de 1era
 ##### Reinaudi Claudia – Ayudante de 1era
-## N° de grupo: 99
+## N° de grupo: 1
 ## Alumnos:
 
 Apellido y Nombre // Legajo // Mails
