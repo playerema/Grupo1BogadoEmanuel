@@ -17,7 +17,33 @@ bool divisiblePor7(int n){
     
     return divisiblePor7(izquierda-derecha*2);
 }
-void main(){
-    printf("32291 es multiplo de 7: %d\n",divisiblePor7(32291));
-    printf("110 es multiplo de 7: %d",divisiblePor7(110));
+
+int main(){
+    int numero=1;
+    bool continuar=true;
+    
+    while (continuar){
+        printf("ingrese un numero: ");;
+
+        if (scanf("%d", &numero) != 1) {
+            printf("Entrada invalida. Ingrese un numero.\n");
+            return 1;
+        }
+
+        if(numero<1){
+            printf("nivel de reunion no valido. ingreselo otra vez.\n");
+        }else{
+            continuar=false;
+        }
+    }
+    
+    bool b = divisiblePor7(numero);
+
+    if(b){
+        printf("%d es divisible por 7",numero);
+    }else{
+        printf("%d no es divisible por 7",numero);
+    }
+
+    return 0;
 }
