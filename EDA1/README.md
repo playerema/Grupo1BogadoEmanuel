@@ -14,3 +14,4 @@ Curso de Estructuras de Datos y Algoritmos I, Universidad Nacional de Lujan
 Apellido y Nombre // Legajo // Mails
 
 Zumpano Bautista // 210664 // bautizumpa@gmail.com
+Emanuel Bogado   // 174300 // playerema@hotmail.com
