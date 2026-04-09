@@ -27,11 +27,7 @@ int main(){
 
         if (scanf("%d", &numero) != 1) {
             printf("Entrada invalida. Ingrese un numero.\n");
-            return 1;
-        }
-
-        if(numero<1){
-            printf("nivel de reunion no valido. ingreselo otra vez.\n");
+            
         }else{
             continuar=false;
         }
