@@ -71,20 +71,51 @@ int* explosion(int N,int B){
 
 
 int main(){
-    int* lista = explosion(10,3);
-
-    printf("n = 10 b = 3:\n");
-    for(int i=0;i<cant;i++){
-        printf("%d\n",lista[i]);
-    }
-
-    int* lista2 = explosion(20,5);
+    int N = 0;
+    bool continuar = true;
     
-    printf("n = 20,b = 5:\n");
-    for(int i=0;i<cant;i++){
-        printf("%d\n",lista2[i]);
+    while (continuar) {
+        printf("Ingrese un numero N: ");
+
+        if (scanf("%d", &N) != 1) {
+            printf("Entrada invalida. Ingrese un numero.\n");
+
+            // limpiar buffer
+            while (getchar() != '\n');
+
+        } else if (N < 1) {
+            printf("Numero invalido. Ingreselo otra vez.\n");
+        } else {
+            continuar = false;
+        }
     }
-    free(lista);
-    free(lista2);
+
+    int B = 0;
+    continuar = true;
+    
+    while (continuar) {
+        printf("Ingrese un numero B: ");
+
+        if (scanf("%d", &B) != 1) {
+            printf("Entrada invalida. Ingrese un numero.\n");
+
+            // limpiar buffer
+            while (getchar() != '\n');
+
+        } else if (N < 1) {
+            printf("Numero invalido. Ingreselo otra vez.\n");
+        } else {
+            continuar = false;
+        }
+    }
+
+    int* ex = explosion(N,B);
+    
+    printf("[");
+    for(int i = 0;i<cant;i++){
+        printf(" %d",ex[i]);
+    }
+    printf(" ]\n");
+
     return 0;
 }
