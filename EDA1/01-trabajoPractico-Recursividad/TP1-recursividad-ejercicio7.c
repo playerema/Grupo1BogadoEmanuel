@@ -17,7 +17,7 @@ la apariencia del grupo de chinos que asisten a una reunión de nivel “n”.*/
 
 char * reunionMafia(int n){
     char *c;
-    if(n!=1){
+    if(n>1){
         char *ant = reunionMafia(n-1);
         int tam = strlen(ant)+7;
         c=malloc(tam);
@@ -27,24 +27,40 @@ char * reunionMafia(int n){
         strcat(c,ant);
         strcat(c,".-)");
         free(ant);
-    }else{
+    }else if (n==1){
         c = malloc(6);
         strcpy(c,"(-.-)");
+    }else{
+        char * vacio=malloc(1);
+        vacio[0]='\0';
+        return vacio;
     }
+
     return c;
 }
 
-int main(){
-    char *f1 = reunionMafia(1);
-    printf(f1);
-    printf("\n");
-    char *f2 = reunionMafia(2);
-    printf(f2);
-    printf("\n");
-    char *f3 = reunionMafia(3);
-    printf(f3);
-    printf("\n");
-    char *f4 = reunionMafia(4);
-    printf(f4);
-    return 0;
+int main() {
+    int nivelReunion = 1;
+    bool continuar = true;
+    
+    while (continuar) {
+        printf("Ingrese el nivel de la reunion: ");
+
+        if (scanf("%d", &nivelReunion) != 1) {
+            printf("Entrada invalida. Ingrese un numero.\n");
+
+            // limpiar buffer
+            while (getchar() != '\n');
+
+        } else if (nivelReunion < 1) {
+            printf("Nivel de reunion no valido. Ingreselo otra vez.\n");
+        } else {
+            continuar = false;
+        }
     }
+    
+    char *f1 = reunionMafia(nivelReunion);
+    printf("%s\n",f1);
+
+    return 0;
+}
