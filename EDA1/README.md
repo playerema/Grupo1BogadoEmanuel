@@ -15,4 +15,5 @@ Apellido y Nombre // Legajo // Mails
 
 Zumpano Bautista // 210664 // bautizumpa@gmail.com
 Emanuel Bogado   // 174300 // playerema@hotmail.com
-Salgado Ulises // 187154 // ulisesasalgado@gmail.com
+Salgado Ulises   // 187154 // ulisesasalgado@gmail.com
+Julieta Esporas  // 208142 // julietaesporas@gmail.com
