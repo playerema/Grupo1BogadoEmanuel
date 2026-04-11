@@ -8,3 +8,4 @@ ulises     salgado     45034357    187154
 ivo        straschenco 47021373    208174    ivo.straschenco@gmail.com
 Adriana    Mendez      47790243    210877    adrianacandelamendez@gmail.com
 Bautista   Zumpano                 210664    bautizumpa@gmail.com
+Thomas     Balvidares  47272658    200932    thomasbalvi016@gmail.com
