@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdbool.h>
 #include <string.h>
+#include "tp_1_recursividad.h"
 
 //Ejercicio 1
 /*Construir una función recursiva que retorne verdadero si una cadena de caracteres
