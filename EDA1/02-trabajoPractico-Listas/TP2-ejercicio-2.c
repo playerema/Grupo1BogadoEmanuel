@@ -89,13 +89,14 @@ ResultadoValorMinimo valorMinimo(Lista l1, Lista l2){
     
     // obtener minimo y posicion ordinal de la lista 1
     Iterador l1_ite = iterador(l1);
-    TipoElemento minimo_l1 = siguiente(l1_ite), minimo_aux_l1;
+    TipoElemento minimo_l1 = l_recuperar(l1, 1), minimo_aux_l1;
+
     int pos_l1 = 1, pos_aux_l1 = 1;
     
     while (hay_siguiente(l1_ite)) {
         minimo_aux_l1 = siguiente(l1_ite);
-
-        if (minimo_aux_l1 < minimo_l1) {
+        
+        if (minimo_aux_l1->clave < minimo_l1->clave) {
             minimo_l1 = minimo_aux_l1;
             pos_l1 = pos_aux_l1;
         }
@@ -104,17 +105,18 @@ ResultadoValorMinimo valorMinimo(Lista l1, Lista l2){
 
     // obtener minimo y posicion ordinal de la lista 2
     Iterador l2_ite = iterador(l2);
-    TipoElemento minimo_l2 = siguiente(l2_ite), minimo_aux_l2; 
+    TipoElemento minimo_l2 = l_recuperar(l2, 1), minimo_aux_l2; 
     int pos_l2 = 1, pos_aux_l2 = 1;
 
     while(hay_siguiente(l2_ite)) {
         minimo_aux_l2 = siguiente(l2_ite);
 
         if (minimo_aux_l2->clave < minimo_l2->clave) {
-            minimo_l2->clave = minimo_aux_l2->clave;
+            minimo_l2 = minimo_aux_l2;
             pos_l2 = pos_aux_l2;
         }
         pos_aux_l2++;
+        
     }
 
     // comparar y asignar
