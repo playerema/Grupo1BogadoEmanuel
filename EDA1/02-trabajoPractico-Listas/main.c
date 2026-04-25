@@ -58,8 +58,8 @@ int main() {
                     // insertar valores aleatorios
                     for (int i = 0; i < 10; i++) {
 
-                        l_agregar(l1, te_crear(rand() % 10));
-                        l_agregar(l2, te_crear(rand() % 10));
+                        l_agregar(l1, te_crear(1 + rand() % 15);
+                        l_agregar(l2, te_crear(1 + rand() % 15);
                     }
 
                     salto;
