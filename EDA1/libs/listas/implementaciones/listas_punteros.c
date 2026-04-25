@@ -231,11 +231,11 @@ Iterador iterador(Lista lista) {
 
 
 bool hay_siguiente(Iterador iterador) {
-    return iterador->posicionActual->siguiente != NULL;
+    return iterador->posicionActual != NULL;
 }
 
 TipoElemento siguiente(Iterador iterador) {
-    if (iterador->posicionActual->siguiente != NULL) {
+    if (iterador->posicionActual != NULL) {
 
         TipoElemento elemento = iterador->posicionActual->valores;
         iterador->posicionActual = iterador->posicionActual->siguiente;
