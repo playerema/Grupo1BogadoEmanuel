@@ -1,9 +1,9 @@
-#include "../headers/listas.h"
+#include ".\listas.h"
 #include <stdlib.h>
 #include <stdio.h>
-#include "../../tipoElemento/headers/tipo_elemento.h"
+#include "..\Tipos\tipo_elemento.h"
 
-static const int TAMANIO_MAXIMO = 100;
+// static const int TAMANIO_MAXIMO = 100;  Pasado al .h
 
 struct ListaRep {
     TipoElemento *valores;
@@ -97,9 +97,9 @@ bool l_insertar(Lista lista, TipoElemento elemento, int pos) {
     // Controlo que si pos > cantidad de elementos lo agrega al final
     if (pos > l_longitud(lista)) {
         l_agregar(lista, elemento);
-        return true;
+        return false;
     }
-    // Ahora si lo puede insertar
+    // Ahora si lo puede insertar - genero el hueco
     for (int i = lista->cantidad; i >= pos && i > 0; i--) {
         lista->valores[i] = lista->valores[i - 1];
     }
@@ -115,14 +115,15 @@ bool l_eliminar(Lista lista, int pos) {
     }
     // Ahora intento eliminar
     if (1 <= pos && pos <= l_longitud(lista)) {
-        for (int i = pos - 1; i < lista->cantidad - 1; i++) {
+        //aplasta a la izquierda
+        for (int i = pos - 1; i < lista->cantidad; i++) {
             lista->valores[i] = lista->valores[i + 1];
         }
         lista->cantidad--;
         return true;
     }
     else {
-	return false;
+        return false;
     }
 }
 
@@ -141,6 +142,26 @@ void l_mostrar(Lista lista) {
         printf("%d ", lista->valores[i]->clave);
     }
     printf("\n");
+}
+
+
+bool l_destruir(Lista L) {
+    if (L==NULL) {
+        return true;
+    }
+    if (L->cantidad==0) {
+        free(L->valores);
+        free(L);
+        return true;
+    }
+    // recorro para eliminarla
+    while (l_es_vacia(L) != true) {
+        l_eliminar(L, 1);
+    }
+    // ahora libero el array
+    free(L->valores);
+    free(L);
+    return true;
 }
 
 
@@ -170,3 +191,6 @@ TipoElemento siguiente(Iterador iterador) {
         return NULL;
     }
 }
+
+
+
