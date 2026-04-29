@@ -67,6 +67,7 @@ Lista verElementosQueNoSeRepiten(Lista l1, Lista l2){
 
     return noRepetidos;
 }
+
 float promedio(Lista l1){
 
     Iterador l1_ite = iterador(l1);
@@ -79,16 +80,7 @@ float promedio(Lista l1){
     return (float)suma / l_longitud(l1);
 }
 
-Resultados promedioAmbasListas(Lista l1, Lista l2){
-    Resultados promedioAmbas;
-
-    promedioAmbas.resultado1 = promedio(l1);
-    promedioAmbas.resultado2 = promedio(l2);
-
-    return promedioAmbas;
-}
-
-ResultadoValorMaximo valorMaximo(Lista l1, Lista l2){
+ResultadoValorMinimo valorMinimo(Lista l1, Lista l2){
     
     // obtener minimo y posicion ordinal de la lista 1
     Iterador l1_ite = iterador(l1);
@@ -122,12 +114,12 @@ ResultadoValorMaximo valorMaximo(Lista l1, Lista l2){
         
     }
 
-    // comparar y asignar
-    ResultadoValorMaximo resultados;
+    ResultadoValorMinimo resultados;
 
-    resultados.lista = (minimo_l1->clave < minimo_l2->clave) ? 1 : 2;
-    resultados.valor = (minimo_l1->clave < minimo_l2->clave) ? minimo_l1->clave : minimo_l2->clave;
-    resultados.pos = (minimo_l1->clave < minimo_l2->clave) ? pos_l1 : pos_l2;
+    resultados.pos = pos_l1;
+    resultados.valor = minimo_l1->clave;
+    resultados.pos_2 = pos_l2;
+    resultados.valor_2 = minimo_l2->clave;
 
     return resultados;
 }
@@ -212,7 +204,7 @@ int CompararListas(Lista L1, Lista L2)
     return resu;
 }
 
-//P5
+// P5
 void hacerPolinomio(Lista list) {
 
     int grado;
@@ -222,34 +214,46 @@ void hacerPolinomio(Lista list) {
 
     for (int i = grado; i >= 0; i--) {
 
-        int coef;
-        printf("Coeficiente de x^%d: ", i);
-        scanf("%d", &coef);
+        float* coef = malloc(sizeof(float));
 
-        l_agregar(list, te_crear(coef));
+        printf("Coeficiente de x^%d: ", i);
+        scanf("%f", coef);
+
+        l_agregar(list, te_crear_con_valor(i, coef));
     }
+}
+
+float evaluarPoliomio(Lista list, float x) {
+
+    float resultado = 0;
+
+    Iterador ite = iterador(list);
+
+    while (hay_siguiente(ite)) {
+
+        TipoElemento elemento = siguiente(ite);
+
+        float coef = *(float*) elemento->valor;
+        int grado = elemento->clave;
+
+        resultado += coef * pow(x, grado);
+    }
+
+    return resultado;
 }
 
 Lista calcularRango(Lista list, double x, double y, double sumando) {
 
     Lista resultado = l_crear();
-    
+
     for (double i = x; (sumando > 0) ? i <= y : i >= y; i += sumando) {
 
-        double valor = 0;
-        int grado = l_longitud(list) - 1;
+        float valor = evaluarPoliomio(list, i);
 
-        Iterador list_ite = iterador(list);
+        float* res = malloc(sizeof(float));
+        *res = valor;
 
-        while(hay_siguiente(list_ite)) {
-
-            TipoElemento elemento = siguiente(list_ite);
-
-            valor += elemento->clave * pow(i, grado);
-            grado--;
-        }
-
-        l_agregar(resultado, te_crear((int)valor));
+        l_agregar(resultado, te_crear_con_valor(0, res));
     }
 
     return resultado;
