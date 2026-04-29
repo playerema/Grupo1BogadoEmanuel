@@ -87,16 +87,14 @@ int main() {
                     salto;
                     
                     // punto D.
-                    Resultados resultados_2 = promedioAmbasListas(l1, l2);
                     printf("D: mostrar promedio de ambas listas\n");
-                    printf("Promedio lista 1: %.2f\nPromedio lista 2: %.2f", resultados_2.resultado1, resultados_2.resultado2);
-                    salto;
+                    printf("Promedio lista 1: %.2f\nPromedio lista 2: %.2f\n", promedio(l1), promedio(l2));
                     salto;
                     
                     // punto E.
-                    ResultadoValorMaximo resultadoMinimo_2 = valorMaximo(l1, l2);
+                    ResultadoValorMinimo resultadoMinimo_2 = valorMinimo(l1, l2);
                     printf("E: mostrar el valor minimo y su posicion ordinal\n");
-                    printf("Valor minimo: %d - Pos. ordinal: %d - lista: %d\n", resultadoMinimo_2.valor, resultadoMinimo_2.pos, resultadoMinimo_2.lista);
+                    printf("Lista 1 -> valor minimo: %d - pos: %d\nLista 2 -> valor minimo: %d - pos %d\n", resultadoMinimo_2.valor, resultadoMinimo_2.pos, resultadoMinimo_2.valor_2, resultadoMinimo_2.pos_2);
                     
                     printf("\nDesea repetir el ejercicio? (1 = Si / 0 = No): ");
                     scanf("%d", &seguir);
