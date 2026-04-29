@@ -280,7 +280,23 @@ int main() {
 
                     };
 
-                    CompararListas(l1, l2);
+                    int resu = CompararListas(l1, l2);
+                    if(resu==1)
+                    {
+                        printf("Lista 1 > Lista 2.\n");
+                    }
+                    else if(resu==2)
+                    {
+                        printf("Lista 2 > Lista 1.\n");
+                    }
+                    else if(resu==0)
+                    {
+                        printf("Lista 1 = Lista 2.\n");
+                    }
+                    else
+                    {
+                        printf("Comparación inválida.\n");
+                    } 
 
                     printf("\nDesea repetir el ejercicio? (1 = Si / 0 = No): ");
                     scanf("%d", &seguir);
