@@ -3,7 +3,7 @@
 #include <stdio.h>
 #include "../../tipoElemento/headers/tipo_elemento.h"
 
-// static const int TAMANIO_MAXIMO = 100;  Pasado al .h
+static const int TAMANIO_MAXIMO = 100; // Pasado al .h
 
 struct ListaRep {
     TipoElemento *valores;
