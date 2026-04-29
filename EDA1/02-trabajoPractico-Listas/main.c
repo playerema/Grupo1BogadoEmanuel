@@ -124,17 +124,29 @@ int main() {
                     printf("Lista 1:\n");
                     while (number != -1 && !l_es_llena(l1)) {
                         printf("Ingrese un numero entero (-1 para continuar): ");
-                        if (scanf("%d", &number) != 1) {
+
+                        int result = scanf("%d", &number);
+
+                        if (result != 1) {
                             printf("Dato invalido.\n\n");
                             while (getchar() != '\n');
                             continue;
                         }
+
+                        int c = getchar();
+                        if (c != '\n') {
+                            printf("Dato invalido.\n\n");
+                            while (getchar() != '\n');
+                            continue;
+                        }
+
                         if (number < 1 && number != -1) {
                             printf("El numero tiene que ser mayor a 0.\n\n");
                             continue;
                         }
                         if (number == -1 && l_es_vacia(l1)) {
                             printf("La lista 1 esta vacia, no se puede continuar.\n\n");
+                            number = 0;
                             continue;
                         }
 
@@ -143,7 +155,6 @@ int main() {
                             printf("Se agrego correctamente...\n\n");
                         }
                         
-
                     };
 
                     printf("\nLista 2:\n");
@@ -151,11 +162,21 @@ int main() {
 
                         printf("Ingrese un numero entero (%d/%d): ", l_longitud(l2)+1, l_longitud(l1));
 
-                        if (scanf("%d", &number) != 1) {
+                        int result = scanf("%d", &number);
+
+                        if (result != 1) {
                             printf("Dato invalido.\n\n");
                             while (getchar() != '\n');
                             continue;
                         }
+
+                        int c = getchar();
+                        if (c != '\n') {
+                            printf("Dato invalido.\n\n");
+                            while (getchar() != '\n');
+                            continue;
+                        }
+
                         if (number < 1) {
                             printf("El numero tiene que ser mayor a 0.\n\n");
                             continue;
@@ -206,13 +227,24 @@ int main() {
 
                         printf("Ingrese un numero entero (-1 para continuar): ");
 
-                        if (scanf("%d", &number) != 1) {
+                        int result = scanf("%d", &number);
+
+                        if (result != 1) {
                             printf("Dato invalido.\n\n");
                             while (getchar() != '\n');
                             continue;
                         }
+
+                        int c = getchar();
+                        if (c != '\n') {
+                            printf("Dato invalido.\n\n");
+                            while (getchar() != '\n');
+                            continue;
+                        }
+
                         if (number == -1 && l_es_vacia(l1)) {
                             printf("La lista 1 esta vacia, no se puede continuar.\n\n");
+                            number = 0;
                             continue;
                         }
 
@@ -228,7 +260,16 @@ int main() {
 
                         printf("Ingrese un numero entero (%d/%d): ", l_longitud(l2)+1, l_longitud(l1));
 
-                        if (scanf("%d", &number) != 1) {
+                        int result = scanf("%d", &number);
+
+                        if (result != 1) {
+                            printf("Dato invalido.\n\n");
+                            while (getchar() != '\n');
+                            continue;
+                        }
+
+                        int c = getchar();
+                        if (c != '\n') {
                             printf("Dato invalido.\n\n");
                             while (getchar() != '\n');
                             continue;
@@ -267,7 +308,16 @@ int main() {
                     while (1) {
                         printf("Ingrese un valor numerico para X: ");
 
-                        if (scanf("%lf", &x) != 1) {
+                        int result = scanf("%d", &x);
+
+                        if (result != 1) {
+                            printf("Dato invalido.\n\n");
+                            while (getchar() != '\n');
+                            continue;
+                        }
+
+                        int c = getchar();
+                        if (c != '\n') {
                             printf("Dato invalido.\n\n");
                             while (getchar() != '\n');
                             continue;
@@ -279,7 +329,16 @@ int main() {
                     while (1) {
                         printf("Ingrese un valor numerico para Y: ");
 
-                        if (scanf("%lf", &y) != 1) {
+                        int result = scanf("%d", &y);
+
+                        if (result != 1) {
+                            printf("Dato invalido.\n\n");
+                            while (getchar() != '\n');
+                            continue;
+                        }
+
+                        int c = getchar();
+                        if (c != '\n') {
                             printf("Dato invalido.\n\n");
                             while (getchar() != '\n');
                             continue;
@@ -291,7 +350,16 @@ int main() {
                     while(1) {
                         printf("Ingrese el intervalo (puede ser positivo o negativo segun el rango): ");
 
-                        if (scanf("%lf", &sumando) != 1) {
+                        int result = scanf("%d", &sumando);
+
+                        if (result != 1) {
+                            printf("Dato invalido.\n\n");
+                            while (getchar() != '\n');
+                            continue;
+                        }
+
+                        int c = getchar();
+                        if (c != '\n') {
                             printf("Dato invalido.\n\n");
                             while (getchar() != '\n');
                             continue;
@@ -359,13 +427,24 @@ int main() {
 
                         printf("Ingrese un numero entero (-1 para continuar): ");
 
-                        if (scanf("%d", &number) != 1) {
+                        int result = scanf("%d", &number);
+
+                        if (result != 1) {
                             printf("Dato invalido.\n\n");
                             while (getchar() != '\n');
                             continue;
                         }
+
+                        int c = getchar();
+                        if (c != '\n') {
+                            printf("Dato invalido.\n\n");
+                            while (getchar() != '\n');
+                            continue;
+                        }
+
                         if (number == -1 && l_es_vacia(l1)) {
                             printf("La lista 1 esta vacia, no se puede continuar.\n\n");
+                            number = 0;
                             continue;
                         }
 
@@ -383,14 +462,24 @@ int main() {
 
                         printf("Ingrese un numero entero (-1 para continuar): ");
 
-                        if (scanf("%d", &number) != 1) {
+                        int result = scanf("%d", &number);
+
+                        if (result != 1) {
+                            printf("Dato invalido.\n\n");
+                            while (getchar() != '\n');
+                            continue;
+                        }
+
+                        int c = getchar();
+                        if (c != '\n') {
                             printf("Dato invalido.\n\n");
                             while (getchar() != '\n');
                             continue;
                         }
 
                         if (number == -1 && l_es_vacia(l2)) {
-                            printf("La lista 1 esta vacia, no se puede continuar.\n\n");
+                            printf("La lista 2 esta vacia, no se puede continuar.\n\n");
+                            number = 0;
                             continue;
                         }
 
