@@ -1,8 +1,9 @@
-#include ".\listas.h"
+#include "../headers/listas.h"
 #include <stdlib.h>
 #include <stdio.h>
+#include "../../tipoElemento/headers/tipo_elemento.h"
 
-//static const int TAMANIO_MAXIMO = 100;  Pasado al .h
+static const int TAMANIO_MAXIMO = 100; // Pasado al .h
 static const int NULO = -1;
 
 struct Nodo {
