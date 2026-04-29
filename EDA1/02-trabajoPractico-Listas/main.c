@@ -324,7 +324,7 @@ int main() {
                     while (1) {
                         printf("Ingrese un valor numerico para X: ");
 
-                        int result = scanf("%d", &x);
+                        int result = scanf("%lf", &x);
 
                         if (result != 1) {
                             printf("Dato invalido.\n\n");
@@ -345,7 +345,7 @@ int main() {
                     while (1) {
                         printf("Ingrese un valor numerico para Y: ");
 
-                        int result = scanf("%d", &y);
+                        int result = scanf("%lf", &y);
 
                         if (result != 1) {
                             printf("Dato invalido.\n\n");
@@ -366,7 +366,7 @@ int main() {
                     while(1) {
                         printf("Ingrese el intervalo (puede ser positivo o negativo segun el rango): ");
 
-                        int result = scanf("%d", &sumando);
+                        int result = scanf("%lf", &sumando);
 
                         if (result != 1) {
                             printf("Dato invalido.\n\n");
@@ -409,8 +409,13 @@ int main() {
                     
                     for (double i = x; (sumando > 0) ? i <= y : i >= y; i += sumando) {
                         
-                        if (i == (int)i) printf("F(%d) = %d\n", (int)i, siguiente(list_calculado_ite)->clave);
-                        else printf("F(%.1f) = %d\n", i, siguiente(list_calculado_ite)->clave);
+                        if (i == (int)i) printf("F(%d) = ", (int)i);
+                        else printf("F(%.1f) = ", i);
+
+                        float valor = *(float*)siguiente(list_calculado_ite)->valor;
+
+                        if (valor == (int)valor) printf("%d\n", (int)valor);
+                        else printf("%.2f\n", valor);
 
                     }
 
