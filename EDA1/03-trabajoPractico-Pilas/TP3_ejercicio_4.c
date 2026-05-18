@@ -10,17 +10,17 @@
 	Determinar la complejidad algorítmica de la solución.
  */
 // retorna el valor cambiado de base como un string (char*).  Si la base no esta entre 2 y 16 retorno el mismo numero recibido como string (char*).
-char* p_ej4_cambiarbase(int n, int base) {
+char* p_ej4_cambiarbase(int nrobasedecimal, int nrootrabase); {
 
-    if (base < 2 || base > 16) {
+    if (nrootrabase < 2 || nrootrabase > 16) {
         char* res = malloc(20);
-        sprintf(res, "%d", n);
+        sprintf(res, "%d", nrobasedecimal);
         return res;
     }
 
     Pila p = p_crear();
 
-    if (n == 0) {
+    if (nrobasedecimal == 0) {
         char* res = malloc(2);
         res[0] = '0';
         res[1] = '\0';
@@ -28,12 +28,12 @@ char* p_ej4_cambiarbase(int n, int base) {
     }
 
     while (n > 0) {
-        int resto = n % base;
+        int resto = nrobasedecimal % nrootrabase;
 
         TipoElemento e = te_crear(resto);
         p_apilar(p, e);
 
-        n = n / base;
+        nrobasedecimal = nrobasedecimal / nrootrabase;
     }
 
     char* res = malloc(50);
