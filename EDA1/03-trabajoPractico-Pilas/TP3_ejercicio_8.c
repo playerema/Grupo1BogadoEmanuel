@@ -59,4 +59,4 @@ Pila p_ej8_sacarrepetidos(Pila p) {
     }
 
     return resultado; 
-}
+} // O(n^2)
