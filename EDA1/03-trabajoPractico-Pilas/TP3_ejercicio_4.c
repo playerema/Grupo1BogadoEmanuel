@@ -10,7 +10,7 @@
 	Determinar la complejidad algorítmica de la solución.
  */
 // retorna el valor cambiado de base como un string (char*).  Si la base no esta entre 2 y 16 retorno el mismo numero recibido como string (char*).
-char* p_ej4_cambiarbase(int nrobasedecimal, int nrootrabase); {
+char* p_ej4_cambiarbase(int nrobasedecimal, int nrootrabase){
 
     if (nrootrabase < 2 || nrootrabase > 16) {
         char* res = malloc(20);
