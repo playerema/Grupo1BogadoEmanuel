@@ -1,8 +1,6 @@
 #include <stdio.h>
 #include "tp_pilas.h"
 #include <string.h>
-#include "pilas_arreglos.c"
-#include "tipo_elemento.c"
 
 Pila p_ej6_eliminarclave(Pila p, int clave){
     Pila paux = p_crear();
@@ -39,7 +37,7 @@ void p_ej6_eliminarclaveAux(Pila p, int clave, Pila res){
 
     TipoElemento te = p_desapilar(p);
 
-    eliminarAux(p, clave, res);
+    p_ej6_eliminarclaveAux(p, clave, res);
 
     p_apilar(p, te);
 
@@ -55,11 +53,4 @@ Pila p_ej6_eliminarclave2(Pila p, int clave){
     p_ej6_eliminarclaveAux(p, clave, res);
 
     return res;
-}
-
-
-int main(){
-
-    
-    return 0;
 }
