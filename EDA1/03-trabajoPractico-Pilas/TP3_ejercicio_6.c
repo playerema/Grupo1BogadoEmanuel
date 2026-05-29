@@ -1,5 +1,7 @@
 #include <stdio.h>
 #include "tp_pilas.h"
+#include "../libs/pilas/headers/pilas.h"
+#include "../libs/tipoElemento/headers/tipo_elemento.h"
 #include <string.h>
 
 Pila p_ej6_eliminarclave(Pila p, int clave){
