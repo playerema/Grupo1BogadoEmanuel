@@ -1,9 +1,8 @@
 #include "tp_pilas.h"
-#include "pilas.h"
-#include "tipo_elemento.h"
+#include "../libs/pilas/headers/pilas.h"
+#include "../libs/tipoElemento/headers/tipo_elemento.h"
 
 #include <stdio.h>
-#include <time.h>
 
 // O(n)
 bool p_buscar(Pila pila, int num){
