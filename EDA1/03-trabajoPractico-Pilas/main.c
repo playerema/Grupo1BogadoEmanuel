@@ -1,5 +1,5 @@
-#include "pilas.h"
-#include "tipo_elemento.h"
+#include "../libs/pilas/headers/pilas.h"
+#include "../libs/tipoElemento/headers/tipo_elemento.h"
 #include "tp_pilas.h"
 
 #include <stdio.h>
