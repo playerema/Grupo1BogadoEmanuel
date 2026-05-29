@@ -27,7 +27,7 @@ char* p_ej4_cambiarbase(int nrobasedecimal, int nrootrabase); {
         return res;
     }
 
-    while (n > 0) {
+    while (nrobasedecimal > 0) {
         int resto = nrobasedecimal % nrootrabase;
 
         TipoElemento e = te_crear(resto);
