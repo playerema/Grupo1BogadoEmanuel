@@ -82,7 +82,13 @@ Cola c_ej5_divisortotal(Cola c){
             c_encolar(caux2,c_desencolar(caux4));
         }
 
-        if(n > max/2){c_encolar(res,te);}
+        if(n > max/2){
+            bool* b = malloc(sizeof(bool));
+            if(n==max){*b=true;}else{*b=false;}
+            te->valor=b;
+
+            c_encolar(res,te);
+        }
         
     }
 
@@ -107,6 +113,8 @@ int main(){
     Cola j = c_ej5_divisortotal(c);
 
     c_mostrar(j);
+    printf("%d\n",*(bool*)c_desencolar(j)->valor);
+    printf("%d\n",*(bool*)c_desencolar(j)->valor);
 
     return 0;
 }
