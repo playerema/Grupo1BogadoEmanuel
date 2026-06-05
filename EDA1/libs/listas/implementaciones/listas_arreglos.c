@@ -3,7 +3,7 @@
 #include <stdio.h>
 #include "../../tipoElemento/headers/tipo_elemento.h"
 
-static const int TAMANIO_MAXIMO = 100; // Pasado al .h
+static const int TAMANIO_MAXIMO_LISTAS = 100; // Pasado al .h
 
 struct ListaRep {
     TipoElemento *valores;
@@ -24,7 +24,7 @@ struct IteradorRep {
 
 Lista l_crear() {
     Lista nueva_lista = (Lista) malloc(sizeof(struct ListaRep));
-    nueva_lista->valores = calloc(TAMANIO_MAXIMO, sizeof(TipoElemento));
+    nueva_lista->valores = calloc(TAMANIO_MAXIMO_LISTAS, sizeof(TipoElemento));
     nueva_lista->cantidad = 0;
     return nueva_lista;
 }
@@ -36,7 +36,7 @@ bool l_es_vacia(Lista lista) {
 
 
 bool l_es_llena(Lista lista) {
-    return (lista->cantidad == TAMANIO_MAXIMO);
+    return (lista->cantidad == TAMANIO_MAXIMO_LISTAS);
 }
 
 
