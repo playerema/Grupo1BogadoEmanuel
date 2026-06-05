@@ -28,7 +28,7 @@ int main() {
         printf("    3 - Eliminar claves repetidas - Ejercicio 4\n");
         printf("    4 - Divisores - Ejercicio 5\n");
         printf("    5 - Comunes en cola y pila - Ejercicio 6\n");
-        printf("    6 - Claves en comun - Ejercicio 7\n");
+        printf("    6 - Atender cliente - Ejercicio 7\n");
         printf("    0 - Salir\n");
         printf("+--------------------------------------+\n");
 
