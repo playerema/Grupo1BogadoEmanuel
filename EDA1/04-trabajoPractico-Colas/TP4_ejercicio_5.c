@@ -21,7 +21,7 @@ int c_longitud(Cola c){
     return res;
 }
 
-int maximo(Cola c){
+/*int maximo(Cola c){
     if(c_es_vacia(c)){return 0;}
     int res = INT_MIN;
     Cola caux = c_crear();
@@ -40,9 +40,9 @@ int maximo(Cola c){
     }
 
     return res;
-}
+}*/
 
-Cola c_ej5_divisortotal(Cola c){
+Cola c_ej5_divisortotal(Cola c){//o(n^2)
     Cola res = c_crear();
     
     if(c_es_vacia(c)){return res;}//sí esta vacia debes devolver la cola vacia
