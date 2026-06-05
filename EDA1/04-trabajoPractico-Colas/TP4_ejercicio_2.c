@@ -1,295 +1,152 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include "colas.h"
-#include "tipo_elemento.h"
-#include <time.h>
 #include <stdbool.h>
-#define N 6
+#include "tp_colas.h"
+#include "../libs/colas/headers/colas.h"
+#include "../libs/tipoElemento/headers/tipo_elemento.h"
 
-bool buscar(Cola, int);
-Cola insertar(Cola, int, int);
-void sacar(Cola, int);
-int contar(Cola);
-Cola doble(Cola);
-void inver(Cola);
-Cola invertir(Cola);
-void crear(Cola);
-void opcion(Cola, int);
-void menu(Cola, int);
+//  a.	Informar si un elemento dado se encuentra en la cola.
+// Si la encuentra retorna true, caso contrario false
+bool c_ej2_existeclave(Cola c, int clave) {
 
+    if (c_es_vacia(c)) return false;
 
-bool buscar(Cola cola, int numero){        // Ejercicio A
-    Cola cola_aux = c_crear();
-    TipoElemento te;
+    Cola caux = c_crear();
     bool encontrado = false;
 
-    while(!c_es_vacia(cola)){
-        te = c_desencolar(cola);
-        if(te->clave == numero)
-            encontrado = true;
-        c_encolar(cola_aux, te);
+    while (!c_es_vacia(c) && !encontrado) {
+
+        TipoElemento elem = c_desencolar(c);
+        c_encolar(caux, elem);
+
+        if (elem->clave == clave) encontrado = true;
     }
-    while(!c_es_vacia(cola_aux)){
-        te = c_desencolar(cola_aux);
-        c_encolar(cola, te);
-    }
+
+    while (!c_es_vacia(caux)) c_encolar(c, c_desencolar(caux));
+
     return encontrado;
 }
 
-Cola insertar(Cola cola, int num, int pos){         // Ejercicio B
-    Cola cola_aux = c_crear();
-    TipoElemento te;
-    int pos_actual = 1;
+//  b.	Agregar un nuevo elemento en una posición dada (colarse).
+// Retorna la nueva cola con el elemento insertado, caso contrario la cola original recibida.
+Cola c_ej2_colarelemento(Cola c, int posicionordinal, TipoElemento X) {
 
-    while(!c_es_vacia(cola)){
-        te = c_desencolar(cola);
-        if(pos_actual == pos){
-            c_encolar(cola_aux, te_crear(num));
+    if (c_es_llena(c)) return c;
+
+    int pos = 1;
+    Cola caux = c_crear();
+    Cola cr = c_crear();
+
+    while (!c_es_vacia(c)) {
+
+        TipoElemento elem = c_desencolar(c);
+
+        c_encolar(caux, elem);
+
+        if (pos == posicionordinal) c_encolar(cr, X);
+        c_encolar(cr, elem);
+
+        pos++;
+    }
+
+    if (pos == posicionordinal) c_encolar(cr, X);
+
+    while (!c_es_vacia(caux)) c_encolar(c, c_desencolar(caux));
+
+    return cr;
+    
+}
+
+//  c.	Dado un elemento sacarlo de la cola todas las veces que aparezca.
+// Retorna la nueva cola sin el/los elemento/s, caso contrario la cola original recibida.
+Cola c_ej2_sacarelemento(Cola c, int clave) {
+
+    if (c_es_vacia(c)) return c;
+
+    Cola caux = c_crear(), cr = c_crear();
+
+    while (!c_es_vacia(c)) {
+
+        TipoElemento elem = c_desencolar(c);
+        c_encolar(caux, elem);
+
+        if (elem->clave != clave) c_encolar(cr, elem);
+    }
+
+    while (!c_es_vacia(caux)) c_encolar(c, c_desencolar(caux));
+
+    return cr;
+}
+
+//  d.	Contar los elementos de la cola.
+// Retorna la cantidad de elementos de la cola, o 0 (cero) si esta vacia.
+int c_ej2_contarelementos(Cola c) {
+
+    if (c_es_vacia(c)) return 0;
+
+    int contador = 0;
+    Cola caux = c_crear();
+
+    while (!c_es_vacia(c)) {
+
+        c_encolar(caux, c_desencolar(c));
+        contador++;
+    }
+
+    while (!c_es_vacia(caux)) c_encolar(c, c_desencolar(caux));
+
+    return contador;
+}
+
+//  e.	Realizar una función que realice una copia de una cola.
+// Retorna la cola copia tal cual la original, no debe perserse la original.  Si es vacia retorna vacia.
+Cola c_ej2_copiar(Cola c) {
+
+    if (c_es_vacia(c)) return c_crear();
+
+    Cola caux = c_crear(), cr = c_crear();
+
+    while (!c_es_vacia(c)) {
+
+        TipoElemento elem = c_desencolar(c);
+
+        c_encolar(caux, elem);
+        c_encolar(cr, elem);
+    }
+
+    while (!c_es_vacia(caux)) c_encolar(c, c_desencolar(caux));
+
+    return cr;
+}
+
+//  f.	Invertir el contenido de una cola sin destruir la cola original.
+// Retorna la cola al reves (invertida), no debe perserse la original. Si es vacia retorna vacia.
+Cola c_ej2_invertir(Cola c) {
+
+    if (c_es_vacia(c)) return c_crear();
+
+    Cola caux = c_crear(), cr = c_crear(), cr_aux = c_crear(), cr_aux_2 = c_crear();
+
+    while (!c_es_vacia(c)) {
+
+        TipoElemento elem = c_desencolar(c);
+
+        c_encolar(caux, elem);
+        c_encolar(cr_aux, elem);
+    }
+
+    while (!c_es_vacia(cr_aux)) {
+
+        TipoElemento elem = c_desencolar(cr_aux);
+
+        if (!c_es_vacia(cr_aux)) c_encolar(cr_aux_2, elem);
+        else {
+            c_encolar(cr, elem);
+
+            while (!c_es_vacia(cr_aux_2)) c_encolar(cr_aux, c_desencolar(cr_aux_2));
         }
-        c_encolar(cola_aux, te);
-        pos_actual++;   
-    }
-    if(pos >= pos_actual){
-        c_encolar(cola_aux, te_crear(num));
-    }
-    while(!c_es_vacia(cola_aux)){
-        te = c_desencolar(cola_aux);
-        c_encolar(cola, te);
-    }
-    return cola;
-}
 
-void sacar(Cola cola, int num){          // Ejercicio C
-    Cola cola_aux = c_crear();
-    TipoElemento te;
-
-    while(!c_es_vacia(cola)){
-        te = c_desencolar(cola);
-        if(te->clave != num)
-            c_encolar(cola_aux, te);
-    }
-    while(!c_es_vacia(cola_aux)){
-        te = c_desencolar(cola_aux);
-        c_encolar(cola, te);
-    }
-}
-
-int contar(Cola cola){         // Ejercicio D
-    Cola cola_aux = c_crear();
-    TipoElemento te;
-    int cantidad = 0;
-
-    while(!c_es_vacia(cola)){
-        te = c_desencolar(cola);
-        c_encolar(cola_aux, te);
-        cantidad++;
-    }
-    while(!c_es_vacia(cola_aux)){
-        te = c_desencolar(cola_aux);
-        c_encolar(cola, te);
-    }
-    return cantidad;
-}
-
-Cola doble(Cola cola){        // Ejercicio E
-    Cola cola_aux = c_crear();
-    Cola cola_doble = c_crear();
-    TipoElemento te;
-
-    while(!c_es_vacia(cola)){
-        te = c_desencolar(cola);
-        c_encolar(cola_aux, te);
-    }
-    while(!c_es_vacia(cola_aux)){
-        te = c_desencolar(cola_aux);
-        c_encolar(cola, te);
-        c_encolar(cola_doble, te);
-    }
-    return cola_doble;
-}
-
-void inver(Cola cola){         // Ejercicio F
-    if(c_es_vacia(cola))
-        return;
-    TipoElemento te = c_desencolar(cola);
-    inver(cola);
-    c_encolar(cola, te);
-}
-Cola invertir(Cola cola){
-    Cola cola_final = c_crear();
-    Cola cola_aux = c_crear();
-    TipoElemento te;
-
-    while(!c_es_vacia(cola)){
-        te = c_desencolar(cola);
-        c_encolar(cola_aux, te);
-    }
-    while(!c_es_vacia(cola_aux)){
-        te = c_desencolar(cola_aux);
-        c_encolar(cola, te);
-        c_encolar(cola_final, te);
     }
 
-    inver(cola_final);
+    while (!c_es_vacia(caux)) c_encolar(c, c_desencolar(caux));
 
-    return cola_final;
-}
-
-void crear(Cola cola){
-    while(!c_es_vacia(cola)){
-        c_desencolar(cola);
-    }
-        
-    for(int i = 0; i < N; i++){
-        int num = rand() %10 +1;
-        c_encolar(cola, te_crear(num));
-    }
-}
-
-void opcion(Cola cola, int largo){
-    int op;
-    printf("\nDesea continuar: \nNo -> 0 \nSi -> 1\nIngrese su opcion -> ");
-    scanf("%d", &op);
-
-    if(op == 1){
-        menu(cola, largo);
-    }
-    else{
-        if(op == 0){
-            printf("Saliendo...");
-            return;
-        }
-        else{
-            while(op != 0 && op != 1){
-                if(op != 0 && op != 1){
-                    printf("Opcion incompaltible. Intente nuevamente");
-                    printf("\nDesea continuar: \nNo -> 0 \nSi -> 1\nIngrese su opcion -> ");
-                    scanf("%d", &op);
-                }
-                else{
-                    if(op == 1){
-                        menu(cola, largo);
-                    }
-                    else{
-                        if(op == 0){
-                            printf("Saliendo...");
-                            return;
-                        }
-                    }
-                }
-            }
-        }
-    }
-}
-
-void menu(Cola cola, int largo){
-    int eleccion, elemento, pos;
-    printf("\n=============================================\n");
-    printf("               MENU DE PRUEBAS                \n");
-    printf("=============================================\n");
-    printf("Estado actual de la Cola:\n");
-    c_mostrar(cola);
-    printf("---------------------------------------------\n");
-    printf("1. Buscar un elemento de la cola\n");
-    printf("2. Insertar elemento en posicion a eleccion\n");
-    printf("3. Eliminar un elemento de la cola\n");
-    printf("4. Contar la cantidad de los elementos de la cola\n");
-    printf("5. Realizar una copia\n");
-    printf("6. Invertir el contenido de la cola\n");
-    printf("7. Recargar cola con nuevos valores al azar\n");
-    printf("0. Salir\n");
-    printf("Ingrese una opcion: ");
-    scanf("%d", &eleccion);
-
-    switch(eleccion){
-        case 1:
-            printf("Ingrese el elemento que desea buscar: \n");
-            scanf("%d", &elemento);
-            if(buscar(cola, elemento)){
-                printf("El elemento se encuentra en la cola\n");
-            }
-            else{
-                printf("El elemento no se encuentra en la cola\n");
-            }
-            break;
-
-        case 2:
-            printf("Ingrese el elemento que desea agregar a la cola\n");
-            scanf("%d", &elemento);
-            printf("Ingrese la posicion que desea que se encuentre su elemento entre 1 - %d\n", largo);
-            scanf("%d", &pos);
-            if(pos >= 1 && pos <= largo){
-                cola = insertar(cola, elemento, pos);
-            }
-            else{
-                while(pos < 1 || pos > largo){
-                    if(pos < 1 || pos > largo){
-                        printf("Opción incompaltible. Intente nuevamente");
-                        printf("Ingrese el elemento que desea agregar a la cola\n");
-                        scanf("%d", &elemento);
-                        printf("Ingrese la posicion que en la que desea que se encuentre su elemento entre 1 - %d\n", largo);
-                        scanf("%d", &pos);
-                    }
-                    else{
-                        cola = insertar(cola, elemento, pos);
-                    }
-                }
-            }
-            printf("El elemento fue correctamente agregado\n");
-            c_mostrar(cola);
-            largo++;
-            break;
-
-        case 3:
-            printf("Ingrese el elemento que desea que sea retirado de la cola\n");
-            scanf("%d", &elemento);
-            sacar(cola, elemento);
-            printf("El elemento fue quitado\n");
-            break;
-        
-        case 4:
-            int cantidad = contar(cola);
-            printf("En la cola hay %d elementos\n", cantidad);
-            break;
-
-        case 5:
-            Cola copia = c_crear();
-            copia = doble(cola);
-            printf("La cola fue copiada\n");
-            break;
-
-        case 6:
-            Cola cola_invertida = c_crear();
-            cola_invertida = invertir(cola);
-            printf("La cola fue invertida\n");
-            c_mostrar(cola_invertida);
-            break;
-
-        case 7:
-            crear(cola);
-            printf("La cola fue cargada con nuevos elementos\n");
-            largo = N + 1;
-            break;
-
-        case 0:
-            printf("Sesion cerada\n");
-            break;
-
-        default:
-            printf("Opcion invalida. Intente nuevamente.\n");
-            break;
-    }
-    if(eleccion != 0){
-        opcion(cola, largo);
-    }
-}
-
-int main(){
-    srand(time(NULL));
-    Cola cola = c_crear();
-    crear(cola);
-    int largo = N + 1;
-    menu(cola, largo);
-
-    return 0;
+    return cr;
 }
