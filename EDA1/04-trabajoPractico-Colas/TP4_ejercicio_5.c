@@ -1,10 +1,11 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 #include <stdbool.h>
 #include <limits.h>
-#include "./libs\tp_colas.h"
-#include "./libs\colas_arreglos.c"
-#include "./libs\tipo_elemento.c"
+#include "tp_colas.h"
+#include "../libs/colas/headers/colas.h"
+#include "../libs/tipoElemento/headers/tipo_elemento.h"
 
 int c_longitud(Cola c){
     int res=0;
@@ -97,24 +98,4 @@ Cola c_ej5_divisortotal(Cola c){//o(n^2)
     }
 
     return res;
-}
-
-int main(){
-    Cola c=c_crear();
-
-    c_encolar(c,te_crear(8));
-    c_encolar(c,te_crear(12));
-    c_encolar(c,te_crear(4));
-    c_encolar(c,te_crear(2));
-    c_encolar(c,te_crear(6));
-
-     c_mostrar(c);
-
-    Cola j = c_ej5_divisortotal(c);
-
-    c_mostrar(j);
-    printf("%d\n",*(bool*)c_desencolar(j)->valor);
-    printf("%d\n",*(bool*)c_desencolar(j)->valor);
-
-    return 0;
 }
