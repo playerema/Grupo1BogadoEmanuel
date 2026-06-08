@@ -28,7 +28,7 @@ int main() {
         printf("    3 - Eliminar claves repetidas - Ejercicio 4\n");
         printf("    4 - Divisores - Ejercicio 5\n");
         printf("    5 - Comunes en cola y pila - Ejercicio 6\n");
-        printf("    6 - Atender cliente - Ejercicio 7\n");
+        printf("    6 - Atender clientes - Ejercicio 7\n");
         printf("    0 - Salir\n");
         printf("+--------------------------------------+\n");
 
@@ -405,6 +405,8 @@ int main() {
                     if (c_ej3_iguales(c1, c2)) printf("SI son iguales.\n");
                     else printf("NO son iguales.\n");
 
+                    printf("Complejidad algoritmica: O(n).\n");
+
                     seguir = repetir_ejercicio();
                 }
                 
@@ -467,6 +469,8 @@ int main() {
 
                     printf("Cola original:\n"); c_mostrar(c);
                     printf("Cola sin repeticiones:\n"); c_mostrar(cr);
+
+                    printf("Complejidad algoritmica: O(n^2).\n");
 
                     seguir = repetir_ejercicio();
                 }
@@ -585,6 +589,8 @@ int main() {
                     }
 
                     while (!c_es_vacia(caux)) c_encolar(cr, c_desencolar(caux));
+
+                    printf("Complejidad algoritmica: O(n).\n");
                 
                     seguir = repetir_ejercicio();
                 }
@@ -698,6 +704,8 @@ int main() {
                         printf("%s, ", (char *)e->valor);
                     }
                     printf(")\n");
+
+                    printf("Complejidad algoritmica: O(n^2).\n");
 
                     seguir = repetir_ejercicio();
                 }
